@@ -8,13 +8,24 @@
 <body>
   <div id="app">
     <!-- submitイベントでSendTodoが発火する -->
+    <!-- preventによってPOSTさせない -->
     <form v-on:submit.prevent = "sendTodo">
       <input v-model="todo">
       <input type="submit" value="追加">
     </form>
     <ul v-for="item in list">
-      <li>
-        {{ item }}
+      <!-- doneTodo(item)でitem自身のstatusを変化させる -->
+      <li v-on:click="doneTodo(item)">
+        <span>
+          status: {{ item.status }}
+        </span>
+        <!-- v-ifでstatusによって表示の仕方を変える -->
+        <s v-if="item.status == 'done'">
+          {{ item.text }}
+        </s>>
+        <span v-else>
+          {{ item.text }}            
+        </span>
       </li>
     </ul>
     <!-- 確認用 -->

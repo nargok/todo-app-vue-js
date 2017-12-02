@@ -11,6 +11,11 @@
       <input v-model="todo">
       <input type="submit" value="追加">
     </form>
+    <ul v-for="item in list">
+      <li>
+        {{ item }}
+      </li>
+    </ul>
     <!-- 確認用 -->
     {{ todo }}
   </div>
